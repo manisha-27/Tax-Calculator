@@ -39,8 +39,8 @@ Enter the required information:
 - Deductions
 - Age category
 - Error icons will be displayed for incorrect inputs.
-- Ensure all mandatory fields are filled.
-- Click the "Submit" button.
+- Ensure all mandatory fields are filled/selected before the Submit button is enabled; otherwise, the button remains disabled.
+- Once enabled, click the "Submit" button to proceed.
 - A modal will appear, showing the final tax calculation based on the provided inputs.
 - Click the "History" button to view the last calculations performed within the webpage timeframe.
 ### Assumptions
