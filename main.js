@@ -1,4 +1,4 @@
-var gross=document.getElementById("gross");
+var gross=document.getElementById("numberField");
 var extra=document.getElementById("extra");
 var ageselect=document.getElementById("ageselect");
 var deduction=document.getElementById("deduction");
@@ -6,7 +6,12 @@ var deduction=document.getElementById("deduction");
 var deductionValue = parseFloat(deduction.value) || 0;
 
 function calculate(){
-    var total = parseFloat(gross.value) + parseFloat(extra.value) - deductionValue;
+    console.log("=====")
+    console.log(gross.value+" - "+extra.value+" - "+ageSelect.value+" - "+deduction.value)
+    console.log("=====")
+    console.log(document.getElementById("numberField").value);
+    var total = parseFloat(gross.value) + parseFloat(extra.value) - parseFloat(deduction.value);
+    console.log("=====")
     var ans=0;
     if(total>800000){
         if(ageselect.value==1){
@@ -86,8 +91,8 @@ function validateNumber(input) {
     if (isNaN(value)) {
         errorIcon.classList.remove("hidden");
         errorTooltip.classList.remove("hidden");
-        checkInputGross=true;
-        validateNumber1();
+        // checkInputGross=true;
+        // validateNumber1();
     } else {
         errorIcon.classList.add("hidden");
         errorTooltip.classList.add("hidden");
@@ -102,27 +107,27 @@ function validateNumber(input) {
 //     }
 // }
 
-function validateNumber1() {
-    // if (isNaN(value)) {
-    //     checkInputExtra=true;
-    //     checkIfSubmitEnabled();
-    // }
-    var input1 = document.getElementById("gross").value;
-  var input2 = document.getElementById("extra").value;
-  var input3 = document.getElementById("deduction").value;
-    // var submitButton = document.getElementById("submit-btn");
-    console.log(input1+" - "+input2+" - "+input3);
+// function validateNumber1() {
+//     // if (isNaN(value)) {
+//     //     checkInputExtra=true;
+//     //     checkIfSubmitEnabled();
+//     // }
+//     var input1 = document.getElementById("gross").value;
+//   var input2 = document.getElementById("extra").value;
+//   var input3 = document.getElementById("deduction").value;
+//     // var submitButton = document.getElementById("submit-btn");
+//     console.log(input1+" - "+input2+" - "+input3);
     
-    // // Regular expression to match only numbers
-    // var regex = /^[0-9]*$/;
+//     // // Regular expression to match only numbers
+//     // var regex = /^[0-9]*$/;
     
-    // // Check if all input fields contain only numbers
-    // if (regex.test(input1) && regex.test(input2) && regex.test(input3)) {
-    //     submitButton.disabled = false; // Enable the button
-    // } else {
-    //     submitButton.disabled = true; // Disable the button
-    // }
-}
+//     // // Check if all input fields contain only numbers
+//     // if (regex.test(input1) && regex.test(input2) && regex.test(input3)) {
+//     //     submitButton.disabled = false; // Enable the button
+//     // } else {
+//     //     submitButton.disabled = true; // Disable the button
+//     // }
+// }
 
 // function validateNumber2(input) {
 //     var value = input.value;
@@ -161,4 +166,47 @@ document.getElementById("help-icon").addEventListener("mouseover", function() {
 document.getElementById("help-icon").addEventListener("mouseout", function() {
     var tooltip = document.getElementById("helpTooltip");
     tooltip.style.display = "none";
+});
+
+
+// Make Submit Button eneable or Disable
+
+// Get the input fields, select element, and submit button
+const inputFields = document.querySelectorAll('.form-control');
+const ageSelect = document.getElementById('ageselect');
+const submitButton = document.getElementById('submit-btn');
+
+// Function to check if a value is a number
+function isNumber(value) {
+  return /^-?\d*\.?\d+$/.test(value);
+}
+
+// Function to check if the age selection is valid
+function isValidAgeSelection() {
+  return ageSelect.value !== "0";
+}
+
+// Function to check if all input fields contain numbers and age selection is valid
+function shouldEnableSubmitButton() {
+  const allFieldsContainNumbers = [...inputFields].every(field => isNumber(field.value.trim()));
+  return allFieldsContainNumbers && isValidAgeSelection();
+}
+
+// Add event listener to each input field
+inputFields.forEach(input => {
+  input.addEventListener('input', function() {
+    // Enable or disable the submit button based on input fields and age selection
+    submitButton.disabled = !shouldEnableSubmitButton();
+  });
+});
+
+// Add event listener to the select element
+ageSelect.addEventListener('change', function() {
+  // Enable or disable the submit button based on input fields and age selection
+  submitButton.disabled = !shouldEnableSubmitButton();
+});
+
+// Optionally, you can also add a check when the page loads to see if the submit button should be enabled
+document.addEventListener('DOMContentLoaded', function() {
+  submitButton.disabled = !shouldEnableSubmitButton();
 });
