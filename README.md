@@ -2,8 +2,6 @@
 
 This is a simple tax calculator project developed using HTML, CSS, and JavaScript. The project calculates the tax amount based on the user's age, gross annual income, extra income, and deductions. It also includes error handling for incorrect inputs and validation for mandatory fields.
 
-#### Project Link: https://manisha-27.github.io/Tax-Calculator/
-
 ## References & Requirements
 #### Tax Calculation Formula:
 Overall income (after deductions) under 8 Lakhs is not taxed.
