@@ -87,8 +87,8 @@ label{
 }
 
 
-#help-icon svg{
-    color:  rgb(191, 193, 193);;
+.help-icon{
+    color:  rgb(146, 136, 136);
     cursor: pointer;
     position: absolute;
     /* position: absolute;
@@ -97,15 +97,23 @@ label{
     /* transform: translateY(-50%);  */
 }
 
-#helpTooltip {
+.tooltip-container{
+    position: relative;
+    right: -5px;
+    top: 6px;
+}
+
+.helpTooltip {
     position: absolute;
     background-color: grey;
     color: white;
     padding: 5px;
     border-radius: 5px;
     width: 200px;
-    /* left: 1px; */
-    bottom:  3%;
+    left: 1px;
+    bottom:  15px;
+    /* top: -350%; */
     /* transform: translateY(-50%); */
     display: none;
+    z-index: 1;
 }
